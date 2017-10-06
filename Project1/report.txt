@@ -1,0 +1,32 @@
+Step 5: Input
+
+For step 5, I input 60 for the total number surveyed and 100 for the number that disapproved of the way the president is handling his job. Since the number that disapproved was greater than the total number I supplied, the result was a value over 100%.
+
+I then input 100 for the total, 55 for the disapproving, and 55 for the approving survey takers. This resulted in both groups having 55%, which adds up to more than 100% in total.
+
+----------------------------------------------------------------------------
+
+Step 6: Logic Errors
+
+The first error I introduced was changing the second cin statement from one that assigned its value to numDisapprove to one that replaced the value of numApprove (as one might do if copy-pasting earlier lines of code in a hurry). This made numDisapprove default to 0 and set numApprove to the value meant for numDisapprove.
+
+The second error switched the comparator in the final if statement to a Less than sign, which reversed the output of the program.
+
+----------------------------------------------------------------------------
+
+Step 7: Compilation errors
+
+    Changing "cin >>" to "cin <<" produced the following error:
+
+    compile_error.cpp: In function ‘int main()’:
+    compile_error.cpp:17:10: error: no match for ‘operator<<’ (operand types are ‘std::istream {aka std::basic_istream<char>}’ and ‘int’)
+      cin <<  numSurveyed;
+
+Since cin does not have a defined << operator, the compiler was unable to process this line and the code failed to compile.
+---
+    Changing numSurveyed to numsurveyed on line produced the following error:
+
+    compile_error.cpp:25:47: error: ‘numsurveyed’ was not declared in this scope
+      double pctApprove = 100.0 * numApprove / numsurveyed;
+
+The misspelling of numSurveyed as numsurveyed made showed that the compiler is strict about capitalization and spelling in its variables. The computer requires exactness and small errors like these can cause large problems if they are not caught early.
