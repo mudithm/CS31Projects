@@ -5,36 +5,315 @@ Mudith Mallajosyula, ID# 404937201, Disc 1B
 
 Some of the notable obstacles were figuring out how to do the split function without using a second array, trying to find enough test cases for each function, and trying to figure out what bad input to check for in each function.
 
+---------------------
+
 2. Test Data
 
 appendToAll:
     
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
     
-  * appendToAll(h, )
+  * appendToAll(h, 7, "!")  
+      - Tests a normal scenario.
+  * appendToAll( , , )
+      - 
+  * appendToAll( , , )
+      - 
+  * appendToAll( , , )
+      - 
+  * appendToAll( , , )
+      - 
+  * appendToAll( , , )
+      - 
+  * appendToAll( , , )
+      - 
+  * appendToAll( , , )
+      - 
+  * appendToAll( , , )
+      - 
+
+string g[0];
+
+  * appendToAll( , , )
+      - 
+
+
+
+
 
 lookup:
+
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * lookup( , , )
+      - 
+  * lookup( , , )
+      - 
+  * lookup( , , )
+      - 
+  * lookup( , , )
+      - 
+  * lookup( , , )
+      - 
+  * lookup( , , )
+      - 
+  * lookup( , , )
+      - 
+  * lookup( , , )
+      - 
+  * lookup( , , )
+      - 
+
+string g[0];
+
+  * lookup( , , )
+
+
+
 
 
 positionOfMax:
 
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * positionOfMax(h, 7)
+      - 
+  * positionOfMax(h, 7)
+      - 
+  * positionOfMax(h, 7)
+      - 
+  * positionOfMax(h, 7)
+      - 
+  * positionOfMax(h, 7)
+      - 
+  * positionOfMax(h, 7)
+      - 
+  * positionOfMax(h, 7)
+      - 
+  * positionOfMax(h, 7)
+      - 
+  * positionOfMax(h, 7)
+      - 
+
+string g[0];
+
+  * positionOfMax(h, 7)
+      - 
+
+
 
 rotateLeft:
+
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * rotateLeft( , , )
+      - 
+  * rotateLeft( , , )
+      - 
+  * rotateLeft( , , )
+      - 
+  * rotateLeft( , , )
+      - 
+  * rotateLeft( , , )
+      - 
+  * rotateLeft( , , )
+      - 
+  * rotateLeft( , , )
+      - 
+  * rotateLeft( , , )
+      - 
+  * rotateLeft( , , )
+      - 
+string g[0];
+
+  * rotateLeft( , , )
+      - 
+
+
 
 
 countRuns:
 
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * countRuns( , )
+      - 
+  * countRuns( , )
+      - 
+  * countRuns( , )
+      - 
+  * countRuns( , )
+      - 
+  * countRuns( , )
+      - 
+  * countRuns( , )
+      - 
+  * countRuns( , )
+      - 
+  * countRuns( , )
+      - 
+  * countRuns( , )
+      - 
+
+string g[0];
+
+  * countRuns( , )
+      - 
+
+
+
 
 flip:
+
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * flip( , )
+      -
+  * flip( , )
+      -
+  * flip( , )
+      -
+  * flip( , )
+      -
+  * flip( , )
+      -
+  * flip( , )
+      -
+  * flip( , )
+      -
+  * flip( , )
+      -
+  * flip( , )
+      - 
+
+string g[0];
+
+  * flip( , )
+      -
+
+
+
 
 
 differ:
 
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * differ( , , , , )
+      -
+  * differ( , , , , )
+      -
+  * differ( , , , , )
+      -
+  * differ( , , , , )
+      -
+  * differ( , , , , )
+      -
+  * differ( , , , , )
+      -
+  * differ( , , , , )
+      -
+  * differ( , , , , )
+      -
+  * differ( , , , , )
+      -
+
+string g[0];
+
+  * differ( , , , , )
+      -
+
+
+
+
 
 subsequence:
+
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * subsequence( , , , , )
+      -
+  * subsequence( , , , , )
+      -
+  * subsequence( , , , , )
+      -
+  * subsequence( , , , , )
+      -
+  * subsequence( , , , , )
+      -
+  * subsequence( , , , , )
+      -
+  * subsequence( , , , , )
+      -
+  * subsequence( , , , , )
+      -
+  * subsequence( , , , , )
+      -
+
+string g[0];
+
+  * subsequence( , , , , )
+      -
+
+
 
 
 lookupAny:
 
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * lookupAny( , , , , )
+      -
+  * lookupAny( , , , , )
+      -
+  * lookupAny( , , , , )
+      -
+  * lookupAny( , , , , )
+      -
+  * lookupAny( , , , , )
+      -
+  * lookupAny( , , , , )
+      -
+  * lookupAny( , , , , )
+      -
+  * lookupAny( , , , , )
+      -
+  * lookupAny( , , , , )
+      -
+
+string g[0];
+
+  * lookupAny( , , , , )
+      -
+
+
+
+
 
 split:
+
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * split( , , , , )
+      -
+  * split( , , , , )
+      - 
+  * split( , , , , )
+      - 
+  * split( , , , , )
+      - 
+  * split( , , , , )
+      - 
+  * split( , , , , )
+      - 
+  * split( , , , , )
+      - 
+  * split( , , , , )
+      - 
+  * split( , , , , )
+      - 
+
+string g[0]
+
+  * split( , , , , )
+      - 
