@@ -1,0 +1,87 @@
+Mudith Mallajosyula, ID# 404937201       Disc 1B
+
+Notable Obstacles:
+
+Ordering the if statments so that the cheapest fare was always given to the person who qualified for it was probably the biggest obstacle. Other obstacles included checking the code with g31 and checking that my spelling and format was correct.
+
+Test Data:
+
+1. Age: 25  Student Status: n  Destination: There  Boundaries Crossed: 5
+
+>This tests a default response that does not qualify for any discount.
+
+2. Age: 25  Student Status: n  Destination:  Boundaries Crossed: 1 
+
+>Tests what happens when no destination is given. 
+
+3. Age: -15  Student Status: n  Destination: There  Boundaries Crossed: 1 
+
+>Tests what happens when the age is negative.
+
+4. Age: 0  Student Status: n  Destination: There  Boundaries Crossed: 1 
+
+>Tests what happens when the age is 0.
+
+5. Age: 25  Student Status: n  Destination: There  Boundaries Crossed: -500
+
+>Tests what happens when the boundaries are negative.
+
+6. Age: 25  Student Status: no  Destination: There  Boundaries Crossed: 1 
+
+>Tests what happens when the student status is entered incorrectly.
+
+7. Age: 25  Student Status: y  Destination: There  Boundaries Crossed: 5 
+
+>Tests an adult with a student discount.
+
+8. Age: 25  Student Status: y  Destination: There  Boundaries Crossed: 0
+
+>Tests the same as above with 0 boundaries crossed.
+
+9. Age: 15  Student Status: n  Destination: There  Boundaries Crossed: 99
+
+>Tests a minor with a large number of boundaries crossed
+
+10. Age: 65  Student Status: n  Destination: There  Boundaries Crossed: 99
+
+>Tests a senior at age 65 with a large number of boundaries crossed
+
+11. Age: Hi  Student Status: n  Destination: There  Boundaries Crossed: 99
+
+>Tests inputting a string for age. ***Causes the program to skip steps and fail.***
+
+12. Age: 15  Student Status: n  Destination: There  Boundaries Crossed: Hello
+
+>Tests inputting a string for Boundaries crossed. ***Causes the program to fail.***
+
+13. Age: 75  Student Status: y  Destination: There  Boundaries Crossed: 0
+
+>Tests the special case of a senior student with 0 boundaries crossed.
+
+14. Age: 75  Student Status: y  Destination: There  Boundaries Crossed: 1
+
+>Tests the special case of a senior student with 1 boundary crossed
+
+15. Age: 18  Student Status: n  Destination: There  Boundaries Crossed: 0
+
+>Tests an adult at age 18 with boundaries crossed < 2
+
+16. Age: 18  Student Status: n  Destination: There  Boundaries Crossed: 2
+
+>Tests an adult at age 18 with boundaries crossed exactly 2
+
+17. Age: 25  Student Status: n  Destination:       Boundaries Crossed: 6 
+
+>Tests what happens when destination is a bunch of spaces
+
+18. Age: 15  Student Status: n  Destination: There  Boundaries Crossed: 2
+
+>Tests a minor with boundaries crossed exactly 2
+
+19. Age: 75  Student Status: y  Destination: There  Boundaries Crossed: 3
+
+>Tests a senior student with boundaries crossed > 2
+
+20. Age: -6  Student Status: no  Destination:  Boundaries Crossed: -5000
+
+>Tests bad input in every stage

@@ -1,0 +1,118 @@
+Mudith Mallajosyula, UID 404937201. Disc 1B
+
+---------
+
+
+Obstacles:
+
+The major obstacles I faced while doing this project included figuring out what the exceptions and border cases were, fine-tuning the regular expressions to deal with this, and formatting the output and instructions as per the project spec.
+
+--------
+
+
+Design:
+
+The program consisted of the main functions hasCorrectSyntax(string song) and encodeSong(string song, string& instructions, int& badBeat), along with helper functions encodeNote (provided by instructor) and my functions getBeats(string song), isValidBeat(string beat), isPlayableBeat(string beat), and isValidSong(string song).
+
+
+The structure was as follows:
+
+
+function hasCorrectSyntax(string song)
+    make array with length equal to number of beats (function getBeats)
+    repeatedly:
+        find pos of / in song
+        make substring from start to /
+        if this substring is invalid by isValidBeat
+            return false
+        remove the substring from the beginning of song
+    
+    if there is a trailing value after the last /
+        return false
+return true
+
+
+function encodeSong(string song, string& instructions, int& badBeat)
+    if song has correct syntax
+        make array with length equal to number of beats (function getBeats)
+
+        split into beats and store in the array
+
+        repeatedly:
+            create an iterator for each beat
+            make temp string
+            int to keep track of how many notes per beat (=0)
+            repeatedly:
+                use regex to find noteLetters
+                use regex to find accidental sign, default to ' '
+                use regex to find octave, default to 4
+                plug into encodeNote function, and add to temp string
+                increment how many notes
+                go to next regex match
+
+            if the number of notes is > 1
+                add the temp string surrounded by brackets to the instructions
+            else
+                add the temp string to the instructions
+            if the beat is empty 
+                add a space to the instructions
+
+
+    else if song is not a valid song string
+        return 1
+    else if song is a valid song string but not playable
+        make array with length equal to the number of beats (function getBeats)
+
+        repeatedly:
+            if beat is not playable:
+                set badBeat to the index of the beat + 1
+
+        return 2
+
+function getBeats()
+    make a counting variable
+    repeatedly:
+        if current index is /
+            increment count
+    return the count
+
+
+-----------
+
+Test Data:
+
+for hasCorrectSyntax():
+
+1. "D5//D/"  -Checks a normal scenario
+2. "d5//d/"  -Checks lowercase letters
+3. ""  -Checks an empty string
+4. "D5"    -Checks a note without an ending /
+5. "#/"  -Checks only an accidental sign
+6. "/"   -"checks an empty beat"
+7. "/////"   -checks a bunch of empty beats
+8. "/////A"  -checks a trailing note
+9. "Cb2/"   -checks the lower boundary case
+10. "B#1/"   -checks another rep of this lower boundary case
+11. "Cb6/"   -Checks the upper boundary case
+12. "C6/"   -Checks another upper bound case
+13. "C7/"   -Checks a case above the upper bound
+14. "/   /"  -Checks a bunch of spaces in a beat
+15. "C-3"  -CHecks a negative number for the octave
+
+for encodeSong():
+
+1. "D5//D/" , instrs, badb  -tests a normal case
+2. "D5" , instrs, badb  -tests a case of invalid song string
+3. "D8/" , instrs, badb  -Tests a case of an valid song that is not playable
+4. "A/A#B#/AB9/" , instrs, badb  -tests a bad beat in the third beat
+5. "A/A#B#/AB9/AB8" , instrs, badb  -tests a case with multiple bad beats
+6. "A/" , instrs, 0   -tests a case with a constant as the badBeat. *FAILS*
+7. "A/" , "hello", badb   -tests if a constant string is given *FAILS*
+8. "" , instrs, badb  -tests if an empty string is given
+9. "/////" , instrs, badb  -tests if only rests are given 
+10. "Ab/bA" , instrs, badb  -tests if the accidental precedes the noteLetter
+11. "A/" , instrs = "hello", badb  -tests if instructinos is already assigned a value
+12. "A/" , instrs, badb = 1  -tests if badBeat already has a value
+13. "/" , instrs, badb  -Tests if only a rest is given
+14. "**A**/" , instrs, badb  -Tests if non-alphanumeric data is given
+15. ".../B9" , instrs, badb  -Tests what happens when the song is invalid but also has a bad beat.
