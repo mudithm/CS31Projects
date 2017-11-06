@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cassert>
 
 using namespace std;
 
@@ -16,37 +17,31 @@ int split(string a[], int n, string splitter); // compares each element to split
 
 
 int main(){
-	string meme[6] = {"hello", "1", "2", "3", "4", "hll"};
-	string meme2[6] = {"hello", "1", "2", "3", "4", "hll"};
 
-	cout << differ(meme, 6, meme2, 6) << endl;
-	for (int i = 0; i < 6; i++)
-		cout << meme[i] << " ";
-	cout << endl;	
+ 	    string h[7] = { "selina", "reed", "diana", "tony", "", "logan", "peter" };
+	    assert(lookup(h, 7, "logan") == 5);
+	    assert(lookup(h, 7, "diana") == 2);
+	    assert(lookup(h, 2, "diana") == -1);
+	    assert(positionOfMax(h, 7) == 3);
 
-	rotateLeft(meme, 6, 3);
+	    string g[4] = { "selina", "reed", "peter", "sue" };
+	    assert(differ(h, 4, g, 4) == 2);
+	    assert(appendToAll(g, 4, "?") == 4 && g[0] == "selina?" && g[3] == "sue?");
+	    assert(rotateLeft(g, 4, 1) == 1 && g[1] == "peter?" && g[3] == "reed?");
+
+	    string e[4] = { "diana", "tony", "", "logan" };
+	    assert(subsequence(h, 7, e, 4) == 2);
+
+	    string d[5] = { "reed", "reed", "reed", "tony", "tony" };
+	    assert(countRuns(d, 5) == 2);
 	
-
-	for (int i = 0; i < 6; i++)
-		cout << meme[i] << " ";
-	cout << endl;	
-
-	flip(meme, 6);
-
+	    string f[3] = { "peter", "diana", "steve" };
+	    assert(lookupAny(h, 7, f, 3) == 2);
+	    assert(flip(f, 3) == 3 && f[0] == "steve" && f[2] == "peter");
 	
-	for (int i = 0; i < 6; i++)
-		cout << meme[i] << " ";
-	cout << endl;	
-
-	string d[9] = {
-  	  "tony", "bruce", "steve", "steve", "diana", "diana", "diana", "steve", "steve"
-	};
-	string f[3] = {"shitboi", "shitboa", "bruce"};
-
-
-	cout << subsequence(d, 9, f, 3) << endl;
-	cout << lookupAny(d, 9, f, 3) << endl;
-	cout << countRuns(d, 9) << endl;
+	    assert(split(h, 7, "peter") == 3);
+	
+	    cout << "All tests succeeded" << endl;	
 }
 
 int appendToAll(string a[], int n, string value){
@@ -87,14 +82,14 @@ int positionOfMax(const string a[], int n){
 }
 
 int rotateLeft(string a[], int n, int pos){
-	if (n < 0 || pos >= n)
+	if (n < 0 || pos > n)
 		return -1;
 	string str = a[pos];
 	for (int i = pos; i < n - 1; i++){
 		a[i] = a[i+1];
 	}
 	a[n-1] = str;
-	return n;
+	return pos;
 }
 
 
@@ -177,5 +172,27 @@ int lookupAny(const string a1[], int n1, const string a2[], int n2){
 int split(string a[], int n, string splitter){
 	if (n < 0)
 		return -1;
-
-}
+	int numLess = 0;
+	for (int i = 0; i < n; i++)
+		if (a[i] < splitter)
+			numLess++;
+	for (int j = 0; j < n; j++){
+		if (a[j] < splitter){
+			for (int k = 0; k <= j; k++)
+				if (a[k] >= splitter){
+					string temp = a[j];
+					a[j] = a[k];
+					a[k] = temp;
+				}
+		}else if (a[j] > splitter){
+			for (int k = n - 1; k >= j; k--){
+				if (a[k] <= splitter){
+					string temp = a[j];
+					a[j] = a[k];
+					a[k] = temp;
+				}	
+			}
+		}
+	}
+	return numLess;		
+}	

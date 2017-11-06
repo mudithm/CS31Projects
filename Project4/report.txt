@@ -1,0 +1,40 @@
+Mudith Mallajosyula, ID# 404937201, Disc 1B
+
+
+1. Obstacles
+
+Some of the notable obstacles were figuring out how to do the split function without using a second array, trying to find enough test cases for each function, and trying to figure out what bad input to check for in each function.
+
+2. Test Data
+
+appendToAll:
+    
+string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+    
+  * appendToAll(h, )
+
+lookup:
+
+
+positionOfMax:
+
+
+rotateLeft:
+
+
+countRuns:
+
+
+flip:
+
+
+differ:
+
+
+subsequence:
+
+
+lookupAny:
+
+
+split:
