@@ -1,0 +1,86 @@
+Mudith Mallajosyula, ID# 404937201  Disc 1B
+
+1. Obstacles
+
+Some of the major obstacles I had to overcome were figuring out how to set up the multi-file project, making sure the stars and the planets didn't overlap when checking the probe against the target, and figuring out test cases that could thoroughly test the program.
+
+2. Code Description and Pseudocode
+
+I wrote a variety of helper functions to make my code more streamlined and to divide the overall task into smaller, more manageable chunks.
+
+struct StarPlan
+    var to hold stars
+    var to hold planets
+
+int runOneRound
+    if numWords is nonpositive or index of secret word is greater than the numWords or less than 0
+        return -1
+    repeatedly:
+        prompt user for input probe
+        if probe is wrong size or has bad char
+            notify user of bad input
+            continue to next iteration
+        else if probe not in word array
+            tell user of bad input
+            continue to next iteration
+        else if probe is not secret word
+            find stars
+            find planets
+            tell user stars and planets
+        else if probe is secret word
+            break
+        increment count
+
+    return count
+
+bool findWord
+    repeatedly:
+        if probe is equal to current word
+            return true
+        else
+            move on to next word
+        return false
+
+StarPlan findStarsAndPlanets
+    repeatedly:
+        increment i
+        repeatedly:
+            increment j
+            check if ith letter of probe equals jth letter of secret word
+                if i equals j
+                    increment stars
+                    change ith letter of probe and jth letter of secret word to new character
+
+    repeatedly:
+        increment k
+        repeatedly:
+            increment l
+            if kth letter of probe equals lth letter of secret word
+                increment planets 
+                change kth letter of probe and lth letter of secret word to new character
+    return StarPlan object with attributes stars and planets
+
+
+int getMin
+    repeatedly:
+        if value in array is less than min
+            value is new min
+    return min
+
+
+int getMax
+    repeatedly:
+        if value in array is greater than max
+            value is new max
+    return max
+
+
+int getAvg
+    repeatedly:
+        add element of array to total
+    return total / number of elements
+
+
+
+
+

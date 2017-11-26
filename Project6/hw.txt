@@ -1,0 +1,311 @@
+Mudith Mallajosyula, ID# 404937201, Disc 1B
+
+
+1. a. 
+
+    int main()
+        {
+            int arr[3] = { 5, 10, 15 };
+            int* ptr = arr;
+
+            *ptr = 10;          // set arr[0] to 30
+            ptr ++;
+            *ptr = 20;      
+            ptr ++;
+            *ptr = 30;        // set arr[2] to 10
+
+            while (ptr >= arr)
+            {
+                
+                cout << *ptr << endl;    // print values
+                ptr--;
+            }
+        }
+
+1. b. 
+
+    void findMax(int arr[], int n, int* pToMax)
+    {
+        if (n <= 0) 
+            return;      // no items, no maximum!
+    
+        pToMax = arr;
+
+        for (int i = 1; i < n; i++)
+        {
+            if (arr[i] > *pToMax)
+                 pToMax = arr + i;
+        }
+    }       
+
+    int main()
+    {
+        int nums[4] = { 5, 3, 15, 6 };
+        int* ptr;
+
+        findMax(nums, 4, ptr);
+        cout << "The maximum is at address " << ptr << endl;
+        cout << "It's at position " << ptr - nums << endl;
+        cout << "Its value is " << *ptr << endl;
+    }
+
+    The reason that the function will not work as intended is because the pointer pToMax is passed by value. Since we do not follow the pointer and change the object at the address it points to, the function will not change the value of the pointer outside of the scope of the function.
+
+
+    To fix this, we change the function findMax to take the parameter int* &pToMax.
+
+    void findMax(int arr[], int n, int* &pToMax) // Changed this
+    {
+        if (n <= 0) 
+            return;      // no items, no maximum!
+    
+        pToMax = arr;
+
+        for (int i = 1; i < n; i++)
+        {
+            if (arr[i] > *pToMax)
+                 pToMax = arr + i;
+        }
+    }       
+
+    int main()
+    {
+        int nums[4] = { 5, 3, 15, 6 };
+        int* ptr;
+
+        findMax(nums, 4, ptr);
+        cout << "The maximum is at address " << ptr << endl;
+        cout << "It's at position " << ptr - nums << endl;
+        cout << "Its value is " << *ptr << endl;
+    }    
+
+1. c. 
+
+     void computeCube(int n, int* ncubed)
+    {
+        *ncubed = n * n * n;
+    }
+
+    int main()
+    {
+        int* ptr;
+        computeCube(5, ptr);
+        cout << "Five cubed is " << *ptr << endl;
+    }
+
+    Since the pointer is not initialized to point to the address of a specific variable, changing the value it points to would change the value of a random memory address, and this might cause problems if the memory address infringes on another value used by the program.
+
+    To fix this, we should assign an integer variable and have the pointer point to its address, as follows:
+
+    int main()
+    {
+        int n;  // Added this variable
+        int* ptr = &n; // assigned to pointer to this address
+        computeCube(5, ptr);
+        cout << "Five cubed is " << *ptr << endl;
+    }
+
+1. d. 
+
+     // return true if two C strings are equal
+    bool strequal(const char str1[], const char str2[])
+    {
+        while (str1 != 0  &&  str2 != 0)
+        {
+            if (str1 != str2)  // compare corresponding characters
+                return false;
+            str1++;            // advance to the next character
+            str2++;
+        }
+        return str1 == str2;   // both ended at same time?
+    }
+
+    int main()
+    {
+        char a[15] = "Zhou";
+        char b[15] = "Zhu";
+
+        if (strequal(a,b))
+            cout << "They're the same person!\n";
+    }
+
+
+Since we are using cstrings and not c++ strings, the function will not work as expected. 
+
+Since a Cstring is essentially a character array, when using relational operators (like ==) with cstrings, the values that are compared are the pointers to the first element of each array and not the value of the whole string. So, unless they are pointing to the same cstring object, the return value of the last line will never be true.
+
+A similar issue occurs in the condition of the while loop. The values that are compared should be the dereferences of the pointers, not the pointers themselves, because they would only be equal if the pointers pointed to elements in the same cstring.
+
+Also, there is nothing that checks that the length of both strings is the same, so that should be added.
+
+To fix these issues (assuming the cstring functions are not to be used) , we could replace all instances of the pointer with the dereferenced pointer (except for when we increment it) and add code to check that the length of the function is the same. 
+
+
+    // return true if two C strings are equal
+    bool strequal(const char str1[], const char str2[])
+    {
+        while (*str1 != 0  &&  *str2 != 0)
+        {
+            if (*str1 != *str2)  // compare corresponding characters
+                return false;
+            str1++;            // advance to the next character
+            str2++;
+        }
+        if (*str1 == 0 && *str2 == 0)
+            return true;
+        else
+            return false;
+    }
+
+    int main()
+    {
+        char a[15] = "Zhou";
+        char b[15] = "Zhu";
+
+        if (strequal(a,b))
+            cout << "They're the same person!\n";
+    }
+
+
+1. e. 
+
+    #include <iostream>
+    using namespace std;
+
+    int* nochange(int* p)
+    {
+        return p;
+    }
+
+    int* getPtrToArray(int& m)
+    {
+        int anArray[100];
+        for (int j = 0; j < 100; j++)
+            anArray[j] = 100-j;
+        m = 100;
+        return nochange(anArray);
+    }
+
+    void f()
+    {
+        int junk[100];
+        for (int k = 0; k < 100; k++)
+            junk[k] = 123400000 + k;
+        junk[50]++;
+    }
+
+    int main()
+    {
+        int n;
+        int* ptr = getPtrToArray(n);
+        f();
+        for (int i = 0; i < 3; i++)
+            cout << ptr[i] << ' ';
+        for (int i = n-3; i < n; i++)
+            cout << ptr[i] << ' ';
+        cout << endl;
+    }
+
+    The program initializes an array with the getPtrToArray function and then overwrites that same array again with the f function.
+
+    So, instead of outputting the contents of the array initialized in the getPtrToArray function, it outputs the contents of the array initialized in f.
+
+
+
+2. a. double* cat;
+   b. double mouse [5];
+   c. cat = &mouse[4];
+   d. *cat = 25;
+   e. *(mouse + 3) = 42;
+   f.  cat -= 3;
+   g. *(cat + 1) = 54;
+   h. (cat-1)[1] = 27;
+   i. bool b = (*cat == *(cat + 1))
+   j. bool d = (cat == mouse)
+
+3. a. 
+
+     double mean(const double* scores, int numScores)
+    {
+        int count = 0;
+        double tot = 0;
+        while (count < numScores)
+        {
+            tot += *(scores + count);
+            count++;
+        }
+        return tot/numScores;
+    }
+
+3. b.
+
+     // This function searches through str for the character chr.
+    // If the chr is found, it returns a pointer into str where
+    // the character was first found, otherwise nullptr (not found).
+
+    const char* findTheChar(const char* str, char chr)
+    {
+        for (int k = 0; *(str + k) != 0; k++)
+            if (*(str + k) == chr)
+                return (str + k);
+
+        return nullptr;
+    }
+
+3. c.
+
+    // This function searches through str for the character chr.
+    // If the chr is found, it returns a pointer into str where
+    // the character was first found, otherwise nullptr (not found).
+
+    const char* findTheChar(const char* str, char chr)
+    {
+        for (; *str != 0; str++)
+            if (*str == chr)
+                return str;
+
+        return nullptr;
+    }
+
+
+4. The program outputs:
+
+    3:  The maxwell function returns the pointer to the first element of the
+        array.
+        This value is assigned to ptr. ptr is then incremented to point to the third element of the array.
+
+        So &array[5], which is the pointer to the 6th element of the array, minus ptr, at the 3rd element of the array, is 3.
+
+    Before this, the first element of the array, referred to by ptr, is set to -1, and afterwards, the element one index after ptr (at index 3) is set to 9. The second element of the array is then set to 79.
+
+    Array: {-1, 79, 4, 9, 22, 19}
+
+    The swap1 function does not affect the ouput of the program in any way, because it attempts to alter variables that are passed by value, and remain unchanged outside of the scope of the function.
+
+    The function swap2 swaps the values of the first and third elements of the array, resulting in the following array: {4, 79, -1, 9, 22, 19}
+
+    Iterating through the elements of this array and outputting each results in the following output:
+
+    4
+    79
+    -1
+    9
+    22
+    19
+
+5. 
+
+    void removeS(char* ch){
+        char* inter = ch;
+        while(*inter != 0){
+            while (*inter == 'S' || *inter == 's')
+                inter++;
+            *ch = *inter;
+            ch++;
+            inter++;
+
+        }
+        ch++;
+        *ch = '\0';
+
+    }
