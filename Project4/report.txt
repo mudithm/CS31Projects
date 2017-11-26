@@ -9,33 +9,28 @@ Some of the notable obstacles were figuring out how to do the split function wit
 
 2. Test Data
 
+All functions were tested with negative and zero function lengths, with the following supplementary tests.
+
 appendToAll:
     
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
     
   * appendToAll(h, 7, "!")  
       - Tests a normal scenario.
-  * appendToAll( , , )
-      - 
-  * appendToAll( , , )
-      - 
-  * appendToAll( , , )
-      - 
-  * appendToAll( , , )
-      - 
-  * appendToAll( , , )
-      - 
-  * appendToAll( , , )
-      - 
-  * appendToAll( , , )
-      - 
-  * appendToAll( , , )
-      - 
+  * appendToAll( h, 7, "")
+      - Tests for input of an empty string
+  
+string i[5] = {"", "", "" , "" , ""};
+
+  * appendToAll( i, 7, "")
+      - Tests what happens when an empty string array is passed
+  * appendToAll( i, 7, 'c')
+      - Tests what happens when a character is passed *falis the test*
 
 string g[0];
 
-  * appendToAll( , , )
-      - 
+  * appendToAll( g, 0, "Hi")
+      - Tests what happens when an empty array is passed
 
 
 
@@ -45,29 +40,28 @@ lookup:
 
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
 
-  * lookup( , , )
-      - 
-  * lookup( , , )
-      - 
-  * lookup( , , )
-      - 
-  * lookup( , , )
-      - 
-  * lookup( , , )
-      - 
-  * lookup( , , )
-      - 
-  * lookup( , , )
-      - 
-  * lookup( , , )
-      - 
-  * lookup( , , )
-      - 
+  * lookup( h, 7, "selina")
+      - Tests a normal scenario
+  * lookup( h, 7, "")
+      - Tests what happens when the empty string is passed
+  * lookup( h, 7, "peter")
+      - Tests what happens when the last element is passed
+  * lookup( h, 7, "thomas")
+      - Tests what happens when the value is not in the array
+  
+  h = {"selina", "reed", "diana", "diana", "logan", "", "peter"};
+
+  * lookup( h, 7, "diana")
+      - Tests what happens when the target appears more than once in the array
+  * lookup( h, 7, 'c')
+      - Tests what happens when a char is passed *fails the test*
 
 string g[0];
 
-  * lookup( , , )
-
+  * lookup( g, 0, "")
+      - Tests what happens when an empty array is passed with an empty string
+  * lookup( g, 0, "thomas")
+      - Tests what happens when an empty array is passed with a target string
 
 
 
@@ -77,28 +71,32 @@ positionOfMax:
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
 
   * positionOfMax(h, 7)
-      - 
+      - Tests a normal scenario
+  
+h = {"selina", "peter", "diana", "tony", "logan", "", "peter"};
+
   * positionOfMax(h, 7)
-      - 
+      - Tests what happens if the max appears more than once
+
+h = {"", "", "", "", "", "", ""};
+
   * positionOfMax(h, 7)
-      - 
+      - Tests what happens if the max is an empty string
+
+h = {"selina", "Peter", "diana", "tony", "logan", "", "peter"};
+
   * positionOfMax(h, 7)
-      - 
+      - Tests what happens if there is a copy of the max with an uppercase letter at the beginning
+
+h = {"selina", "peteR", "diana", "tony", "logan", "", "peter"};
+
   * positionOfMax(h, 7)
-      - 
-  * positionOfMax(h, 7)
-      - 
-  * positionOfMax(h, 7)
-      - 
-  * positionOfMax(h, 7)
-      - 
-  * positionOfMax(h, 7)
-      - 
+      - Tests what happens if there is a copy of the max with an uppercase letter at the end
 
 string g[0];
 
   * positionOfMax(h, 7)
-      - 
+      - Tests what happens if an empty array is passed
 
 
 
@@ -106,59 +104,60 @@ rotateLeft:
 
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
 
-  * rotateLeft( , , )
-      - 
-  * rotateLeft( , , )
-      - 
-  * rotateLeft( , , )
-      - 
-  * rotateLeft( , , )
-      - 
-  * rotateLeft( , , )
-      - 
-  * rotateLeft( , , )
-      - 
-  * rotateLeft( , , )
-      - 
-  * rotateLeft( , , )
-      - 
-  * rotateLeft( , , )
-      - 
+  * rotateLeft( h, 7, 1)
+      - Tests a normal scenario
+  * rotateLeft( h, 7, 6)
+      - Tests the upper end case
+  * rotateLeft( h, 7, 0)
+      - Tests the lower end case
+  * rotateLeft( h, 7, 7)
+      - Tests a case outside the bounds of the array. 
+  * rotateLeft( h, 7, -1)
+      - Tests a case with a negative input
+  * rotateLeft( h, 7, 5)
+      - Tests a case moving an empty string 
+  
 string g[0];
 
-  * rotateLeft( , , )
-      - 
+  * rotateLeft( h, 0, 0)
+      - Tests moving an empty array
+  * rotateLeft( h, 0, 1)
+      - Tests moving an empty array with input out of bounds
 
 
 
 
 countRuns:
 
-string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+string h[7] = {"selina", "selina", "diana", "diana", "tony", "logan", "peter"};
 
-  * countRuns( , )
-      - 
-  * countRuns( , )
-      - 
-  * countRuns( , )
-      - 
-  * countRuns( , )
-      - 
-  * countRuns( , )
-      - 
-  * countRuns( , )
-      - 
-  * countRuns( , )
-      - 
-  * countRuns( , )
-      - 
-  * countRuns( , )
-      - 
+  * countRuns( h, 7)
+      - Tests a normal scenario
 
+h = {"selina", "selina", "selina", "selina", "selina", "selina", "selina"};
+
+  * countRuns( h, 7)
+      - Tests a scenario with only one run
+
+h = {"", "", "", "", "", "", ""};
+
+  * countRuns( h, 7)
+      - Tests a scenario with only empty strings
+
+h = {"selina", "selina", "", "diana", "tony", "logan", "peter"};
+
+  * countRuns( h, 7)
+      - Tests a scenario with a single empty string
+
+h = {"selina", "selina", "diana", "diana", "diana", "selina", "selina" };
+
+  * countRuns( h, 7)
+      - Tests a scenario with multiple runs of the same string
+  
 string g[0];
 
-  * countRuns( , )
-      - 
+  * countRuns( g, 0)
+      - Tests an empty array as input
 
 
 
@@ -167,29 +166,32 @@ flip:
 
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
 
-  * flip( , )
-      -
-  * flip( , )
-      -
-  * flip( , )
-      -
-  * flip( , )
-      -
-  * flip( , )
-      -
-  * flip( , )
-      -
-  * flip( , )
-      -
-  * flip( , )
-      -
-  * flip( , )
-      - 
+  * flip( h, 7)
+      - Tests a normal scenario
+  * flip( h, 7)
+      - Tests an odd number of terms
 
-string g[0];
+string g[6] = {"selina", "reed", "diana", "tony", "logan", "peter"};
 
-  * flip( , )
-      -
+  * flip( g, 6)
+      - Tests an even number of terms
+ 
+g = {"selina", "reed", "logan", "tony", "logan", "peter"};
+
+  * flip( g, 5)
+      - Tests using less than the total length of the array
+  * flip( g, 6)
+      - Tests using an array with repetition
+
+g = {"", "", "", "", "", ""};
+
+  * flip( g, 6)
+      - Tests a scenario with only empty strings as input
+
+string f[0];
+
+  * flip( f, 0)
+      - Tests an empty array as input
 
 
 
@@ -198,30 +200,40 @@ string g[0];
 differ:
 
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+string g[7] = {"other", "reed", "diana", "tony", "logan", "", "peter"};
 
-  * differ( , , , , )
-      -
-  * differ( , , , , )
-      -
-  * differ( , , , , )
-      -
-  * differ( , , , , )
-      -
-  * differ( , , , , )
-      -
-  * differ( , , , , )
-      -
-  * differ( , , , , )
-      -
-  * differ( , , , , )
-      -
-  * differ( , , , , )
-      -
+  * differ( h, 7, g, 7)
+      - Tests a normal scenario
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
 
-string g[0];
+  * differ( h, 7, g, 7)
+      - Tests when the two arrays are identical
 
-  * differ( , , , , )
-      -
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"selina", "reed", "diana", "tony", "logan", ""};
+
+  * differ( h, 7, g, 6)
+      - Tests when the first array is longer, but they are the same up till then
+  * differ( h, 7, g, 6)
+      - Tests when the last element of an array is an empty string
+
+h = {"selina", "reed", "diana", "tony", "logan", ""};
+g = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * differ( h, 7, g, 7)
+      - Tests a scenario where the second array is longer
+
+g = {};
+
+  * differ( h, 7, g, 0)
+      - Tests what happens when a normal array is tested against an empty array
+
+h = {};
+
+  * differ (h, 0, g, 0)
+      - Tests what happens when two empty arrays are passed
+
 
 
 
@@ -230,30 +242,59 @@ string g[0];
 subsequence:
 
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+string g[5] = {"selina", "reed", "diana", "tony", "logan"};
 
-  * subsequence( , , , , )
-      -
-  * subsequence( , , , , )
-      -
-  * subsequence( , , , , )
-      -
-  * subsequence( , , , , )
-      -
-  * subsequence( , , , , )
-      -
-  * subsequence( , , , , )
-      -
-  * subsequence( , , , , )
-      -
-  * subsequence( , , , , )
-      -
-  * subsequence( , , , , )
-      -
+  * subsequence( h, 7, g, 5)
+      - Tests a normal scenario
 
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * subsequence( h, 7, g, 7)
+      - Tests scenario where the arrays are an exact match
+  * subsequence( h, 7, g, 5)
+      - Tests what happens when exact copies are used but not to their full length
+
+h = {"selina", "reed", "diana", "tony", "logan", ""};
+g = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+
+  * subsequence( h, 6, g, 7)
+      - Tests what happens when the first array is smaller
+  * subsequence( h, 6, g, 3)
+      - Tests what happens when the first array is smaller but not all of the second is used
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"s", "m", "s", "d", "f", "", "g"};
+
+  * subsequence( h, 7, g, 7)
+      - tests what happens when the second is not a subsequence of the first
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"", "", "", "", "", "", ""};
+
+  * subsequence( h, 7, g, 7)
+      - Tests what happens when only the empty string is given
+
+string g[14] = {"selina", "reed", "diana", "tony", "logan", "", "peter", "selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+ 
+  * subsequence( h, 14, g, 7)
+      - Tests what happens when the subsequence shows more than once
+ 
+h = {"selina", "reed", "diana", "tony", ""};
+g = {"selina", "reed", "diana", "tony", "logan"};
+
+  * subsequence( h, 5, g, 5)
+      - Tests what happens a partial subsequence is given
+  
 string g[0];
 
-  * subsequence( , , , , )
-      -
+  * subsequence( h,7,g,0 )
+      - Tests what happens when an empty array is given
+
+string h[0];
+
+  * subsequence( h,0,g,0 )
+      - Tests what happens when both arrays are empty
+
 
 
 
@@ -261,32 +302,55 @@ string g[0];
 lookupAny:
 
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+string g[7] = {"selina", "reed", "diana"};
 
-  * lookupAny( , , , , )
-      -
-  * lookupAny( , , , , )
-      -
-  * lookupAny( , , , , )
-      -
-  * lookupAny( , , , , )
-      -
-  * lookupAny( , , , , )
-      -
-  * lookupAny( , , , , )
-      -
-  * lookupAny( , , , , )
-      -
-  * lookupAny( , , , , )
-      -
-  * lookupAny( , , , , )
-      -
+  * lookupAny( h, 7, g, 3)
+      - Tests a normal scenario
+  * lookupAny( h, 7, g, 2)
+      - Tests when the whole second array is not used
+  
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"selin", "red", "diane"};
+
+  * lookupAny( h, 7, g, 3)
+      - Tests what happens when there is not match 
+
+h = {"selina", "reed", "diana"};
+g = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+  
+  * lookupAny( h, 3, g, 7)
+      - Tests if the second array is larger
+  
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+  
+  * lookupAny( h, 7, g, 7)
+      - Tests if the arrays are identical
+
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"reed", "diana", "tony", "logan", "", "peter", "selina"};
+
+  * lookupAny( h, 7, g, 7)
+      - Tests if the arrays are identical but in different orders
+  * lookupAny( g, 7, h, 7)
+      - Tests if the same with reversed inputs
+
+h = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
+g = {"", "", "", "", "", "", ""};
+
+  * lookupAny( h, 7, g, 7)
+      - Tests with an array of empty strings
+  * lookupAny( g, 7, g, 7)
+      - Tests with both arrays of empty strings, and both the same array
 
 string g[0];
 
-  * lookupAny( , , , , )
-      -
-
-
+  * lookupAny( h, 7, g, 0)
+      - Tests an empty as the search
+  * lookupAny( g, 0, h, 7)
+      - Tests an empty array as the searched
+  * lookupAny( g, 0, g, 0)
+      - Tests two empty arrays
 
 
 
@@ -294,26 +358,20 @@ split:
 
 string h[7] = {"selina", "reed", "diana", "tony", "logan", "", "peter"};
 
-  * split( , , , , )
-      -
-  * split( , , , , )
-      - 
-  * split( , , , , )
-      - 
-  * split( , , , , )
-      - 
-  * split( , , , , )
-      - 
-  * split( , , , , )
-      - 
-  * split( , , , , )
-      - 
-  * split( , , , , )
-      - 
-  * split( , , , , )
-      - 
+  * split( h, 7, "marion")
+      - Tests a normal scenario
+  * split( h, 7, "diana")
+      - Tests using one of the elements of the array
+  * split( h, 6, "marion")
+      - Tests without using the whole array
+  * split( h, 7, "a")
+      - Tests using a string smaller than all the elements
+  * split( h, 7, "zzz")
+      - Tests using a string larger than all the elements
+  * split( h, 7, "")
+      - Tests using an empty string
 
 string g[0]
 
-  * split( , , , , )
-      - 
+  * split( g, 0, "")
+      - Testing an empty array as input

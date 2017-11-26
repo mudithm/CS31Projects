@@ -43,8 +43,8 @@ int main(){
 	
 	    cout << "All tests succeeded" << endl;	
 }
-
-int appendToAll(string a[], int n, string value){
+// appends a string to each element of the array
+int appendToAll(string a[], int n, string value){ 
 	if (n < 0)
 		return -1;
 
